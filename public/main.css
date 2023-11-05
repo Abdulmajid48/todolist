@@ -1,10 +1,14 @@
+.navitem{
+  margin: 10px;
+}
+
 li {
   list-style-type: none
 }
 
 body{
   height: 100vh;
-  background-color: orange;
+
 }
 
 .list {
