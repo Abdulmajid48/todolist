@@ -1,0 +1,45 @@
+<%- include("header.ejs") %>
+
+<body class="bg-light">
+    <div class="list">
+        <ul class="list-group">
+        
+        
+            <li class="form reg list-group-item">
+
+                <% myWishList.forEach(item=> { %>
+        
+                    <p>
+                        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="item">
+
+                        <label for="item"> <%= item %> </label> 
+        
+                    </p>
+        
+                    <% }) %>
+        
+            </li>
+        
+            <form class="input-group mb-3 reg" action="/submit" method="POST">
+                <input type="text" class="form-control" aria-label="Text input with checkbox" name="wish" required>
+                <button type="submit" class="btn btn-outline-danger"> + </button>
+           
+       
+            </form>
+            <form action="/erase"  method="post">
+                <button type="submit" class="btn btn-outline-danger" > +hhh </button>
+            </form>
+        
+        
+        </ul>
+        
+    </div>
+    
+</body>
+   
+
+
+</html>
+
+
+

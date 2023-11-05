@@ -1,0 +1,19 @@
+li {
+  list-style-type: none
+}
+
+body {
+  height: 100vh;
+  background-color: orange;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#item:checked+label {
+  color: blue;
+  text-decoration: line-through;
+}
