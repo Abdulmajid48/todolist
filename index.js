@@ -16,31 +16,25 @@ const db = new pg.Client({
 
 db.connect();
 
-
-
-
-
-// middleware
+// MIDDLEWARE
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // HOMEPAGE
-
-
-
 app.get("/", async (req, res)=>{
     const result = await db.query("SELECT todo FROM list")
     let list = [];
     result.rows.forEach((listy)=>{
           list.push(listy.todo)
     });
+    const date = new Date().toLocaleDateString('en-us', { day:"numeric", month:"long", weekday:"long", year:"numeric" });
    
-    res.render("index.ejs", {myWishList: list})
+    res.render("index.ejs", {myWishList: list, date:date})
 
 });
 
-
+// ADD LIST
 app.post("/submit", async (req, res)=>{
     const item = req.body.wish
     try {
@@ -56,6 +50,7 @@ app.post("/submit", async (req, res)=>{
     }
 });
 
+// ERASE ALL
 app.post("/erase", async (req,res)=>{
           try {
             await db.query("DELETE FROM list WHERE id > 0")
@@ -68,7 +63,7 @@ app.post("/erase", async (req,res)=>{
 });
 
 
-
+// LISTEN
 app.listen(port, ()=>{
     console.log(`listening to port ${port}`);
 })
