@@ -1,0 +1,5 @@
+CREATE TABLE list(
+	id SERIAL PRIMARY KEY,
+	todo VARCHAR(45)
+);
+
